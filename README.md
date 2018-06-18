@@ -11,13 +11,26 @@ the problem.
 
 ### Using Zapptitude APIs
 
-**Sample #1: Tracking successful task completion for given task, topic and context.**
+**Sample #1: Beginning a task**
+```
+    /**
+     * Beginning a Task for a given context
+     */
+    void logBeginTaskExample1() {
+        String task = "3+3=?";
+        String context = "addition";
+
+        Zapptitude.logBeginTask(task, context);
+    }
+```
+
+**Sample #2: Tracking successful task completion for given task, topic and context.**
     
 ```
     /**
      * Sample Zapptitude event logged for a given task
      */
-    void logBinaryTaskExample1() {
+    void logSolvedIntTaskExample1() {
         String task = "3+3=?";
         String context = "addition";
         String topic = "CCSS.MATH.CONTENT.1.OA.A.1";
@@ -29,12 +42,12 @@ the problem.
     }
 
 ```
-**Sample #2: Tracking unsuccessful task completion for given task, topic and context.**
+**Sample #3: Tracking unsuccessful task completion for given task, topic and context.**
 ```
     /**
      * Sample Zapptitude event logged for a given task
      */
-    void logBinaryTaskExample1() {
+    void logSolvedIntTaskExample1() {
         String task = "3+3=?";
         String context = "addition";
         String topic = "CCSS.MATH.CONTENT.1.OA.A.1";
@@ -47,10 +60,10 @@ the problem.
 
 ```
 
-**Sample #3: Tracking successful task completion for given task, topic and another context.**
+**Sample #4: Tracking successful task completion for given task, topic and another context.**
 
 ```
-    void logBinaryTaskExample2() {
+    void logSolvedIntTaskExample2() {
         String task = "3-1=?";
         String context = "subtraction";
         String topic = "CCSS.MATH.CONTENT.1.OA.A.1";
@@ -62,7 +75,7 @@ the problem.
     }
 ```
 
-**Sample #4: Requesting Zid**
+**Sample #5: Requesting Zid**
 ```
     /**
      * Once Zapptitude is enabled in app, it sends event data anonymously unless a Zid is requested.

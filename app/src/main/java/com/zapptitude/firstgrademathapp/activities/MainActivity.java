@@ -25,7 +25,19 @@ public class MainActivity extends BaseActivity {
 
      * Sample Zapptitude event logged for a given task
      */
-    void logBinaryTaskExample1() {
+
+    /**
+     * Beginning a Task for a given context
+     */
+    void logBeginTaskExample1() {
+        String task = "3+3=?";
+        String context = "addition";
+
+
+        Zapptitude.logBeginTask(task, context);
+    }
+
+    void logSolvedIntTaskExample1() {
         String task = "3+3=?";
         String context = "addition";
         String topic = "CCSS.MATH.CONTENT.1.OA.A.1";
@@ -36,7 +48,8 @@ public class MainActivity extends BaseActivity {
                 topic, expected, actual);
     }
 
-    void logBinaryTaskExample2() {
+
+    void logSolvedIntTaskExample2() {
         String task = "3-1=?";
         String context = "subtraction";
         String topic = "CCSS.MATH.CONTENT.1.OA.A.1";
