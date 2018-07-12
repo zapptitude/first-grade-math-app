@@ -1,11 +1,15 @@
 package com.zapptitude.firstgrademathapp.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zapptitude.firstgrademathapp.R;
+
+import java.util.Random;
 
 import mev.zappsdk.modules.Zapptitude;
 
@@ -19,14 +23,53 @@ public class MainActivity extends BaseActivity {
         initQuestion();
     }
 
+    /**
+     * question setup for layout test
+     */
     private void initQuestion() {
-        TextView questionView = findViewById(R.id.question_text);
-        EditText answerInput = findViewById(R.id.answer_input);
-        Button submit = findViewById(R.id.submit);
+        // init view elements
+        final TextView questionView = findViewById(R.id.question_text);
+        final EditText answerInput = findViewById(R.id.answer_input);
+        final Button submitButton = findViewById(R.id.submit);
 
+        // generate two random numbers for question, (var1+var2) <= 20
+        Random r = new Random();
+        int low = 1;
+        int high = 19;
+        final int var1 = r.nextInt(high - low) + low;
+        final int var2 = r.nextInt(high - var1) + low;
+        final int expectedAnswer = var1 + var2;
 
+        // getting string question from template and replacing variables with generated numbers
+        String question = getResources().getString(R.string.question_template, var1, var2);
+        questionView.setText(question);
+
+        // set click listener for submit button
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    int userAnswer = getUserAnswer(answerInput);
+                    checkAnswer(userAnswer, expectedAnswer);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(MainActivity.this, "Please enter an integer", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
+    private int getUserAnswer(EditText answerInput) throws NumberFormatException {
+        String answerString = answerInput.getText().toString();
+        return Integer.parseInt(answerString);
+    }
+
+    private void checkAnswer(int actual, int expected) {
+        if (actual == expected) {
+            Toast.makeText(this, "You're correct 😊", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "You're wrong 😒", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     /**
      * Common core standard description
