@@ -1,6 +1,9 @@
 package com.zapptitude.firstgrademathapp.activities;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.zapptitude.firstgrademathapp.R;
 
@@ -12,6 +15,16 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initQuestion();
+    }
+
+    private void initQuestion() {
+        TextView questionView = findViewById(R.id.question_text);
+        EditText answerInput = findViewById(R.id.answer_input);
+        Button submit = findViewById(R.id.submit);
+
+
     }
 
 
@@ -67,4 +80,5 @@ public class MainActivity extends BaseActivity {
     void requestZid() {
         Zapptitude.requestZappId();
     }
+
 }

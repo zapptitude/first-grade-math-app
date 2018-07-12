@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">First Grade Math App</string>
     <string name="title_activity_base">BaseActivity</string>
+
+    <string name="question_label">Question:</string>
+    <string name="question_template">Anton had %1$d apples and Olena had %2$d apples. How many apples both of them have?</string>
+    <string name="answer_hint">Enter answer here</string>
 </resources>

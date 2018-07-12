@@ -18,12 +18,12 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Zapptitude.onResume();
+//        Zapptitude.onResume();
     }
 
     @Override
     protected void onStop() {
-        Zapptitude.onStop();
+//        Zapptitude.onStop();
         super.onStop();
     }
 }
