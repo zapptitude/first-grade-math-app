@@ -1,17 +1,29 @@
-package com.zapptitude.firstgrademathapp.activities;
+package com.zapptitude.firstgrademathapp.view.activity;
 
 import android.os.Bundle;
 
 import com.zapptitude.firstgrademathapp.R;
+import com.zapptitude.firstgrademathapp.data.Injection;
+import com.zapptitude.firstgrademathapp.presenter.QuizPresenter;
+import com.zapptitude.firstgrademathapp.view.QuizContract;
 
 import mev.zappsdk.modules.Zapptitude;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity
+        extends BaseActivity
+        implements QuizContract.View {
+
+    private QuizContract.UserActionListener mUserActionListener = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mUserActionListener =
+                new QuizPresenter(this, Injection.getDataRepository(this), this);
+
+        mUserActionListener.loadQuizConfig();
     }
 
 
@@ -66,5 +78,11 @@ public class MainActivity extends BaseActivity {
      */
     void requestZid() {
         Zapptitude.requestZappId();
+    }
+
+    //This is where quiz UI rendering happens
+    @Override
+    public void showQuizInterface(Integer quizSize, Integer quizTiming) {
+        //TODO: Render main quiz UI here. Quiz view is based on quiz config: size and timing .
     }
 }
