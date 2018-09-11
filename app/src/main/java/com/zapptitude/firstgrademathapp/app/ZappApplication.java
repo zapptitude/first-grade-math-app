@@ -1,15 +1,9 @@
 package com.zapptitude.firstgrademathapp.app;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.app.Application;
 
-import mev.zappsdk.modules.ZApplication;
-
-/**
- * Created by andrew on 07.04.16.
- */
-public class ZappApplication extends ZApplication {
+public class ZappApplication extends Application {
     private static ZappApplication singleton;
 
     public static ZappApplication getSingleton() {

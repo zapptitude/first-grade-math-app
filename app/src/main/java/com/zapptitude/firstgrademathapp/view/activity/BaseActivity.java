@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.zapptitude.firstgrademathapp.R;
 
-import mev.zappsdk.modules.Zapptitude;
-
 public class BaseActivity extends AppCompatActivity {
 
     @Override
@@ -23,7 +21,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        Zapptitude.onStop();
+//        Zapptitude.onStop();
         super.onStop();
     }
 }

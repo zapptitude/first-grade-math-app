@@ -12,8 +12,6 @@ import com.zapptitude.firstgrademathapp.presenter.QuizPresenter;
 import com.zapptitude.firstgrademathapp.view.QuizContract;
 import com.zapptitude.firstgrademathapp.view.fragments.LevelsFragment;
 
-import mev.zappsdk.modules.Zapptitude;
-
 public class MainActivity
         extends BaseActivity
         implements QuizContract.View, LevelsFragment.OnFragmentInteractionListener {
@@ -51,7 +49,7 @@ public class MainActivity
         String context = "addition";
 
 
-        Zapptitude.logBeginTask(task, context);
+        //Zapptitude.logBeginTask(task, context);
     }
 
     void logSolvedIntTaskExample1() {
@@ -61,8 +59,7 @@ public class MainActivity
         int expected = 6;
         int actual = 6;
 
-        Zapptitude.logSolveIntTask(task, context,
-                topic, expected, actual);
+        //Zapptitude.logSolveIntTask(task, context, topic, expected, actual);
     }
 
 
@@ -73,8 +70,7 @@ public class MainActivity
         int expected = 2;
         int actual = 2;
 
-        Zapptitude.logSolveIntTask(task, context,
-                topic, expected, actual);
+        //Zapptitude.logSolveIntTask(task, context, topic, expected, actual);
     }
 
     /**
@@ -82,7 +78,7 @@ public class MainActivity
      * Zid is important when user wishes to see progress reports at Zapptitude's dashboard.
      */
     void requestZid() {
-        Zapptitude.requestZappId();
+        ///Zapptitude.requestZappId();
     }
 
     //This is where quiz UI rendering happens
