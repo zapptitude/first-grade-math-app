@@ -1,12 +1,22 @@
 package com.zapptitude.firstgrademathapp.view;
 
+import android.content.Context;
+
+import org.firestar.data.IDataServiceApi;
+import org.firestar.model.BundleData;
+import org.firestar.model.DeckBundle;
+
 public interface QuizContract {
     interface View {
         void showQuizInterface(Integer quizSize, Integer quizTiming);
-        void showLevelUI();
+        void showLevels(DeckBundle deckBundle);
     }
 
     interface UserActionListener {
+        //fetch app's data from remote repo
+        void getAppData(String appId, IDataServiceApi.DataServiceCallback dataServiceCallback);
+        void prepareApp(Context context, BundleData bundleData);
+
         void loadLevels();
         void loadQuizConfig();
 

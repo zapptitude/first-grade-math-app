@@ -1,7 +1,6 @@
 package com.zapptitude.firstgrademathapp.view.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zapptitude.firstgrademathapp.R;
+
+import org.firestar.model.Deck;
+import org.firestar.model.DeckBundle;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,12 +23,11 @@ import com.zapptitude.firstgrademathapp.R;
 public class LevelsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_DECK_BUNDLE = "ARG_DECK_BUNDLE";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private DeckBundle mDeckBundle;
 
     private OnFragmentInteractionListener mListener;
 
@@ -34,20 +35,12 @@ public class LevelsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LevelsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LevelsFragment newInstance(String param1, String param2) {
-        LevelsFragment fragment = new LevelsFragment();
+    public static LevelsFragment newInstance(DeckBundle deckBundle) {
+
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(ARG_DECK_BUNDLE, deckBundle);
+
+        LevelsFragment fragment = new LevelsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +49,7 @@ public class LevelsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mDeckBundle = getArguments().getParcelable(ARG_DECK_BUNDLE);
         }
     }
 
@@ -65,14 +57,31 @@ public class LevelsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_levels, container, false);
-    }
+        View rootView = inflater.inflate(R.layout.fragment_levels, container, false);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onLevelsFragmentInteraction(uri);
-        }
+        //TODO: Implement a dynamic way to pass levels and handle interaction
+        rootView.findViewById(R.id.level1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //open level1 quiz
+                if (mListener != null) {
+                    Deck deck = mDeckBundle.getDeckList().get(0);
+                    mListener.onLevelClick(deck);
+                }
+            }
+        });
+
+        rootView.findViewById(R.id.level2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //open level1 quiz
+                if (mListener != null) {
+                    Deck deck = mDeckBundle.getDeckList().get(1);
+                    mListener.onLevelClick(deck);
+                }
+            }
+        });
+        return rootView;
     }
 
     @Override
@@ -104,6 +113,6 @@ public class LevelsFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onLevelsFragmentInteraction(Uri uri);
+        void onLevelClick(Deck deck);
     }
 }

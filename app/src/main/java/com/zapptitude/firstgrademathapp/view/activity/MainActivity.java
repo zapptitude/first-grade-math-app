@@ -1,34 +1,58 @@
 package com.zapptitude.firstgrademathapp.view.activity;
 
-import android.net.Uri;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.widget.Toast;
 
+import com.zapptitude.firstgrademathapp.BuildConfig;
 import com.zapptitude.firstgrademathapp.R;
-import com.zapptitude.firstgrademathapp.data.Injection;
+import com.zapptitude.firstgrademathapp.app.ZappApplication;
 import com.zapptitude.firstgrademathapp.presenter.QuizPresenter;
 import com.zapptitude.firstgrademathapp.view.QuizContract;
 import com.zapptitude.firstgrademathapp.view.fragments.LevelsFragment;
+import com.zapptitude.firstgrademathapp.view.fragments.QuizFragment;
+
+import org.firestar.data.Injection;
+import org.firestar.data.SimpleDataFilterServiceImpl;
+import org.firestar.model.Deck;
+import org.firestar.model.DeckBundle;
+import org.firestar.model.DeckCard;
+
+import timber.log.Timber;
 
 public class MainActivity
         extends BaseActivity
-        implements QuizContract.View, LevelsFragment.OnFragmentInteractionListener {
+        implements QuizContract.View,
+        LevelsFragment.OnFragmentInteractionListener,
+        QuizFragment.OnListFragmentInteractionListener {
 
     private QuizContract.UserActionListener mUserActionListener = null;
+
+    private SimpleDataFilterServiceImpl mFilter = null;
+    private org.firestar.app.AppPrefs appPrefs;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
+        appPrefs = ZappApplication.getSingleton().getAppPrefs();
+        mContext = getApplicationContext();
 
+        mFilter = new SimpleDataFilterServiceImpl(appPrefs.getDeckRandomLimit(),
+                appPrefs.getDeckRandomLimit()>0,
+                appPrefs.getCardRandomLimit(), appPrefs.getCardRandomLimit()>0);
         mUserActionListener =
-                new QuizPresenter(this, Injection.getDataRepository(this), this);
+                new QuizPresenter(this, Injection.Companion.getDataRepository(this, mFilter), this);
 
         mUserActionListener.loadQuizConfig();
     }
-
 
     /**
      * Common core standard description
@@ -87,9 +111,10 @@ public class MainActivity
         //TODO: Render main quiz UI here. Quiz view is based on quiz config: size and timing .
     }
 
+    //Show all levels available
     @Override
-    public void showLevelUI() {
-        Fragment fragLevels = new LevelsFragment();
+    public void showLevels(DeckBundle deckBundle) {
+        Fragment fragLevels = LevelsFragment.newInstance(deckBundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.replace_me, fragLevels)
@@ -103,7 +128,20 @@ public class MainActivity
 
     //control will here when user interacts with LevelsFragment widgets
     @Override
-    public void onLevelsFragmentInteraction(Uri uri) {
+    public void onLevelClick(Deck deck) {
+        //open quiz in recylerview
+        Toast.makeText(mContext, "Level selected: " + deck.getDeckName()
+                , Toast.LENGTH_LONG).show();
 
+        Fragment fragLevels = QuizFragment.newInstance(deck);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.replace_me, fragLevels)
+                .addToBackStack(null).commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onListFragmentInteraction(DeckCard task) {
+        Toast.makeText(mContext, "Not yet implemented", Toast.LENGTH_LONG).show();
     }
 }
