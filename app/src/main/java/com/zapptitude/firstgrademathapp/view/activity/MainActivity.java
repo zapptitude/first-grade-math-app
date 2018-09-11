@@ -1,17 +1,22 @@
 package com.zapptitude.firstgrademathapp.view.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
 
 import com.zapptitude.firstgrademathapp.R;
 import com.zapptitude.firstgrademathapp.data.Injection;
 import com.zapptitude.firstgrademathapp.presenter.QuizPresenter;
 import com.zapptitude.firstgrademathapp.view.QuizContract;
+import com.zapptitude.firstgrademathapp.view.fragments.LevelsFragment;
 
 import mev.zappsdk.modules.Zapptitude;
 
 public class MainActivity
         extends BaseActivity
-        implements QuizContract.View {
+        implements QuizContract.View, LevelsFragment.OnFragmentInteractionListener {
 
     private QuizContract.UserActionListener mUserActionListener = null;
 
@@ -84,5 +89,25 @@ public class MainActivity
     @Override
     public void showQuizInterface(Integer quizSize, Integer quizTiming) {
         //TODO: Render main quiz UI here. Quiz view is based on quiz config: size and timing .
+    }
+
+    @Override
+    public void showLevelUI() {
+        Fragment fragLevels = new LevelsFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.replace_me, fragLevels)
+                .addToBackStack(null).commitAllowingStateLoss();
+    }
+
+    //Start the app
+    public void onBasketClick(View view) {
+        mUserActionListener.loadLevels();
+    }
+
+    //control will here when user interacts with LevelsFragment widgets
+    @Override
+    public void onLevelsFragmentInteraction(Uri uri) {
+
     }
 }

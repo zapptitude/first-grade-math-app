@@ -3,9 +3,11 @@ package com.zapptitude.firstgrademathapp.view;
 public interface QuizContract {
     interface View {
         void showQuizInterface(Integer quizSize, Integer quizTiming);
+        void showLevelUI();
     }
 
     interface UserActionListener {
+        void loadLevels();
         void loadQuizConfig();
 
         //Note: Quiz details are updated to current user only. so all changes will be updated locally only.

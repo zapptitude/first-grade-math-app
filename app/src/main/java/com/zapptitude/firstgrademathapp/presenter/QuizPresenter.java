@@ -17,6 +17,11 @@ public class QuizPresenter implements QuizContract.UserActionListener{
         mQuizView = quizView;
     }
 
+    @Override
+    public void loadLevels() {
+        mQuizView.showLevelUI();
+    }
+
     //Fetch quiz size and timing details from remote or local server to render quiz UI
     @Override
     public void loadQuizConfig() {
@@ -30,4 +35,6 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     public void updateQuizSize(int size) {
         mRepository.updateQuizSize(size);
     }
+
+
 }
