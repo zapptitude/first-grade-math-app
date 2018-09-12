@@ -8,14 +8,13 @@ import android.widget.TextView;
 
 import com.zapptitude.firstgrademathapp.R;
 import com.zapptitude.firstgrademathapp.view.fragments.QuizFragment.OnListFragmentInteractionListener;
-import com.zapptitude.firstgrademathapp.view.fragments.dummy.DummyContent.DummyItem;
 
 import org.firestar.model.DeckCard;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link DeckCard} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */

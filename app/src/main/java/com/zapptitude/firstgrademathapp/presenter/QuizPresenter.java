@@ -46,10 +46,7 @@ public class QuizPresenter implements QuizContract.UserActionListener{
                 Timber.d("Loaded arraylist: " + arrayList);
                 if (arrayList.get(0) instanceof DeckBundle) {
                     mDeckBundle = (DeckBundle) arrayList.get(0);
-                    //Deck deck = mDeckBundle.getDeckList().get(0);
                     mQuizView.showLevels(mDeckBundle);
-                    //TODO: show all levels like this OR add all options
-                    //either in their own fragment or buttons
                 }
             }
 
@@ -127,7 +124,7 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     //Fetch quiz size and timing details from remote or local server to render quiz UI
     @Override
     public void loadQuizConfig() {
-        //TODO: Save this configuration in AppPrefs
+        //TODO: Save this configuration in AppPrefsLocal
         Integer quizSize = 10; //10 questions per quiz
         Integer quizTiming = 5; //In minutes
         mQuizView.showQuizInterface(quizSize, quizTiming);
@@ -136,7 +133,7 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     //Note: Quiz details are updated to current user only. so all changes will be updated locally only.
     @Override
     public void updateQuizSize(int size) {
-        //TODO: update quiz size in sharedPrefs/AppPrefs
+        //TODO: update quiz size in sharedPrefs/AppPrefsLocal
         //mRepository.updateQuizSize(size);
     }
 

@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zapptitude.firstgrademathapp.R;
-import com.zapptitude.firstgrademathapp.view.fragments.dummy.DummyContent;
 
 import org.firestar.model.Deck;
 import org.firestar.model.DeckCard;
