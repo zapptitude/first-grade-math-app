@@ -5,9 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.MainActivity">
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/apple_tree"/>
+        android:id="@+id/replace_me">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onBasketClick"
+             />
+    </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>
