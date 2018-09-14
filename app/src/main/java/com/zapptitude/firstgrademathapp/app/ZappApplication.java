@@ -1,15 +1,10 @@
 package com.zapptitude.firstgrademathapp.app;
 
+import android.support.multidex.MultiDexApplication;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import mev.zappsdk.modules.ZApplication;
-
-/**
- * Created by andrew on 07.04.16.
- */
-public class ZappApplication extends ZApplication {
+public class ZappApplication extends MultiDexApplication {
     private static ZappApplication singleton;
 
     public static ZappApplication getSingleton() {
@@ -19,10 +14,11 @@ public class ZappApplication extends ZApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         singleton = this;
     }
 
-    public AppPrefs getAppPrefs() {
-        return AppPrefs.getInstance(getApplicationContext());
+    public org.firestar.app.AppPrefs getAppPrefs() {
+        return org.firestar.app.AppPrefs.Companion.getInstance(getApplicationContext());
     }
 }

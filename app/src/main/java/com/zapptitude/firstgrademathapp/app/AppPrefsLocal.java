@@ -3,22 +3,22 @@ package com.zapptitude.firstgrademathapp.app;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class AppPrefs {
+public class AppPrefsLocal {
     private String APP_PREFS_FILENAME = "APP_PREFS_FILENAME";
 
-    private static AppPrefs appPrefs = null;
+    private static AppPrefsLocal appPrefsLocal = null;
     private static SharedPreferences sharedPreferences = null;
 
-    private AppPrefs(Context applicationContext) {
+    private AppPrefsLocal(Context applicationContext) {
         sharedPreferences = applicationContext.getSharedPreferences(APP_PREFS_FILENAME, Context.MODE_PRIVATE);
     }
 
-    public static AppPrefs getInstance(Context applicationContext) {
-        if (appPrefs == null) {
-            appPrefs = new AppPrefs(applicationContext);
+    public static AppPrefsLocal getInstance(Context applicationContext) {
+        if (appPrefsLocal == null) {
+            appPrefsLocal = new AppPrefsLocal(applicationContext);
         }
 
-       return appPrefs;
+       return appPrefsLocal;
     }
 
     //returns size of the quiz as 10 by default.
