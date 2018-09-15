@@ -85,3 +85,8 @@ the problem.
         Zapptitude.requestZappId();
     }
 ```
+
+### Project configuration ###
+* Add `google-services.json` inside `app/` folder. 
+Refer ![google-services.json](./screenshots/google-services.json_placement.png).
+Contact priyanka@zapptitude.com to get a copy of configuration file.
