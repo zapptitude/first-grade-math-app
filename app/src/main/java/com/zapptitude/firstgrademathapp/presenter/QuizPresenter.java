@@ -133,9 +133,24 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     //Note: Quiz details are updated to current user only. so all changes will be updated locally only.
     @Override
     public void updateQuizSize(int size) {
-        //TODO: update quiz size in sharedPrefs/AppPrefsLocal
-        //mRepository.updateQuizSize(size);
+        // this info shall be passed to the Model.setNumbQ
     }
 
+    @Override
+    public void updateQuizContext(int context) {
+        // this is a stub for addition when context = 0 and for subtraction when context = 1
+        // this info shall be passed to the Model.setContext
+    }
 
+    @Override
+    public void updateTaskTiming(int timing) {
+        // this is a stub for time limit per task in minutes
+        // this info shall be retained within Presenter to setup time out event
+    }
+
+    @Override
+    public void updateTaskAnswer(int answer) {
+        // this is a stub for the answer posted by the user
+        // this info shall be passed to the Model.setAnswer
+    }
 }
