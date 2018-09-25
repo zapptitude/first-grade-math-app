@@ -23,7 +23,7 @@
 
             <ImageView
                 android:id="@+id/topic_label"
-                android:layout_width="283dp"
+                android:layout_width="280dp"
                 android:layout_height="30dp"
                 android:src="@drawable/topic_label" />
 
@@ -43,16 +43,17 @@
 
             <TextView
                 android:id="@+id/taskEquation"
-                android:layout_width="203dp"
-                android:layout_height="38dp"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:textAppearance="?attr/textAppearanceListItem" />
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:onClick="onLevelClick" />
 
             <EditText
                 android:id="@+id/taskAnswer"
-                android:layout_width="72dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -62,8 +63,8 @@
 
             <TextView
                 android:id="@+id/taskFeedback"
-                android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="206dp"

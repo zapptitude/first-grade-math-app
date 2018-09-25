@@ -38,7 +38,7 @@ public class MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // display the basket view
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
@@ -106,12 +106,14 @@ public class MainActivity
     }
 
     //This is where quiz UI rendering happens
+    //It is part of the QuizContract.View interface
     @Override
     public void showQuizInterface(Integer quizSize, Integer quizTiming) {
         //TODO: Render main quiz UI here. Quiz view is based on quiz config: size and timing .
     }
 
     //Show all levels available
+    //It is part of the QuizContract.View interface
     @Override
     public void showLevels(DeckBundle deckBundle) {
         Fragment fragLevels = LevelsFragment.newInstance(deckBundle);
@@ -124,6 +126,12 @@ public class MainActivity
     //Start the app
     public void onBasketClick(View view) {
         mUserActionListener.loadLevels();
+        setContentView(R.layout.fragment_levels);  // display the smiley green apple view
+    }
+
+    // choose the view levels : alg. expr. , word, grouping, or number bond
+    public void onAlgExprClick(View view) {
+        setContentView(R.layout.fragment_level_expr);  // display the quiz tree view
     }
 
     //control will here when user interacts with LevelsFragment widgets
@@ -136,7 +144,7 @@ public class MainActivity
         Fragment fragLevels = QuizFragment.newInstance(deck);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.replace_me, fragLevels)
+                .replace(R.id.taskEquation, fragLevels)
                 .addToBackStack(null).commitAllowingStateLoss();
     }
 
