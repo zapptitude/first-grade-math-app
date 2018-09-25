@@ -134,7 +134,6 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     @Override
     public void updateQuizSize(int size) {
 
-        // mRepository.updateQuizSize(size);
         // this info shall be passed to the Model.setNumbQ
     }
 
@@ -154,10 +153,7 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     public void updateTaskAnswer(int answer) {
         // this is a stub for the answer posted by the user
         // this info shall be passed to the Model.setAnswer
+    //TODO: update quiz size in sharedPrefs/AppPrefsLocalq
 
-        //TODO: update quiz size in sharedPrefs/AppPrefsLocal
-        //mRepository.updateQuizSize(size);
     }
-
-
 }
