@@ -1,15 +1,13 @@
-package com.zapptitude.firstgrademathapp.presenter;
+package com.zapptitude.firstgrademathapp.model;
 
 import android.content.Context;
 
-import com.zapptitude.firstgrademathapp.R;
 import com.zapptitude.firstgrademathapp.view.QuizContract;
 
 import org.firestar.data.IDataRepository;
 import org.firestar.data.IDataServiceApi;
 import org.firestar.model.AppData;
 import org.firestar.model.BundleData;
-import org.firestar.model.Deck;
 import org.firestar.model.DeckBundle;
 import org.firestar.model.UserAppData;
 
@@ -20,14 +18,15 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class QuizPresenter implements QuizContract.UserActionListener{
+public class QuizModel implements QuizContract.UserActionListener{
     private QuizContract.View mQuizView;
     private IDataRepository mRepository;
     private Context mContext;
 
     private DeckBundle mDeckBundle = null;
 
-    public QuizPresenter(Context context, IDataRepository repository, QuizContract.View quizView){
+    public QuizModel(Context context, IDataRepository repository,
+                     QuizContract.View quizView){
         mContext = context;
         mRepository = repository;
         mQuizView = quizView;
@@ -134,6 +133,7 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     @Override
     public void updateQuizSize(int size) {
 
+        // mRepository.updateQuizSize(size);
         // this info shall be passed to the Model.setNumbQ
     }
 
@@ -153,7 +153,10 @@ public class QuizPresenter implements QuizContract.UserActionListener{
     public void updateTaskAnswer(int answer) {
         // this is a stub for the answer posted by the user
         // this info shall be passed to the Model.setAnswer
-    //TODO: update quiz size in sharedPrefs/AppPrefsLocalq
 
+        //TODO: update quiz size in sharedPrefs/AppPrefsLocal
+        //mRepository.updateQuizSize(size);
     }
+
+
 }

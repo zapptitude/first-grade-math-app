@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.LevelExprFragment"
+    android:background="@drawable/apple_tree">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="480dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/num_tasks"
+                android:layout_width="50dp"
+                android:layout_height="150dp"
+                android:src="@drawable/num_tasks" />
+
+            <ImageView
+                android:id="@+id/topic_label"
+                android:layout_width="280dp"
+                android:layout_height="30dp"
+                android:src="@drawable/topic_label" />
+
+            <ImageView
+                android:id="@+id/num_minutes"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/num_minutes" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/taskEquation"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:background="@color/colorPrimary"/>
+
+            <EditText
+                android:id="@+id/taskAnswer"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:background="@color/colorPrimary"
+                android:numeric="integer"/>
+
+            <TextView
+                android:id="@+id/taskFeedback"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="206dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:background="@color/colorPrimary"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
