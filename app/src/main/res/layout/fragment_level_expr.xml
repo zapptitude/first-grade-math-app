@@ -49,7 +49,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:onClick="onLevelClick" />
+                android:background="@color/colorPrimary"/>
 
             <EditText
                 android:id="@+id/taskAnswer"
@@ -59,7 +59,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:visibility="invisible" />
+                android:background="@color/colorPrimary"
+                android:numeric="integer"/>
 
             <TextView
                 android:id="@+id/taskFeedback"
@@ -68,7 +69,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="206dp"
-                android:textAppearance="?attr/textAppearanceListItem" />
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:background="@color/colorPrimary"/>
 
         </RelativeLayout>
 
