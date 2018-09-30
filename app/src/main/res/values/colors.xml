@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white_overlay">#ffffff</color>
+    <color name="question_block">#FF4DB6AC</color>
 </resources>

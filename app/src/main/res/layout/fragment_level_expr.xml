@@ -3,23 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.LevelExprFragment"
+    tools:context=".view.fragments.LevelsFragment"
     android:background="@drawable/apple_tree">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="480dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/num_tasks"
                 android:layout_width="50dp"
-                android:layout_height="150dp"
-                android:src="@drawable/num_tasks" />
+                android:layout_height="50dp"
+                android:background="@drawable/num_tasks"
+                android:layout_gravity="start"
+                android:text="10"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:gravity="left|center_horizontal" />
 
             <ImageView
                 android:id="@+id/topic_label"
@@ -38,6 +45,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
@@ -45,32 +53,32 @@
                 android:id="@+id/taskEquation"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/question_block"
+                android:textAlignment="center"
+                android:layout_marginBottom="50dp"/>
 
             <EditText
                 android:id="@+id/taskAnswer"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
+                android:background="@android:color/darker_gray"
+                android:inputType="number"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:background="@color/colorPrimary"
-                android:numeric="integer"/>
+                android:layout_below="@id/taskEquation"
+                android:layout_marginBottom="50dp"/>
 
             <TextView
                 android:id="@+id/taskFeedback"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="206dp"
+                android:layout_below="@id/taskAnswer"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/question_block"
+                android:textAlignment="center"/>
 
         </RelativeLayout>
 

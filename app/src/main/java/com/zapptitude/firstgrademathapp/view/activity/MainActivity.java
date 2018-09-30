@@ -126,7 +126,7 @@ public class MainActivity
     //Start the app
     public void onBasketClick(View view) {
         mUserActionListener.loadLevels();
-        setContentView(R.layout.fragment_levels);  // display the smiley green apple view
+        //setContentView(R.layout.fragment_levels);  // display the smiley green apple view
     }
 
     // choose the view levels : alg. expr. , word, grouping, or number bond
@@ -144,7 +144,7 @@ public class MainActivity
         Fragment fragLevels = QuizFragment.newInstance(deck);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.taskEquation, fragLevels)
+                .replace(R.id.replace_me, fragLevels)
                 .addToBackStack(null).commitAllowingStateLoss();
     }
 
